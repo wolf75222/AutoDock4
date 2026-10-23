@@ -218,9 +218,9 @@ double Eval::eval(const int term)
    // increment evaluation counter only for "total energy" case
    if(term==3) num_evals++;
 
-   if ((!finite(energy)) || ISNAN(energy)) {
+   if ((!isfinite(energy)) || ISNAN(energy)) {
       (void)fprintf( logFile, "eval.cc:  ERROR!  energy is %s!\n\n",
-       (!finite(energy))?"infinite":"not a number");
+       (!isfinite(energy))?"infinite":"not a number");
 #define DUMMYATOMSTUFFINF "ATOM  #####  C   INF X   1    "
 #define DUMMYATOMSTUFFNAN "ATOM  #####  C   NAN X   1    "
       for (i=0; i<natom; i++) {

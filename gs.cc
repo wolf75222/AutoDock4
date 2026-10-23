@@ -1013,14 +1013,14 @@ void Genetic_Algorithm::selection_proportional(Population &original_population, 
 
    // Calculate expected number of children for each individual
 
-   assert(finite(worst));
-   assert(finite(avg));
+   assert(isfinite(worst));
+   assert(isfinite(avg));
    assert(!ISNAN(worst));
    assert(!ISNAN(avg));
 
    diffwa = worst - avg;
 
-   assert(finite(diffwa));
+   assert(isfinite(diffwa));
    assert(!ISNAN(diffwa));
 
    if (diffwa != 0.0) { // added by gmm, 4-JUN-1997
@@ -1037,9 +1037,9 @@ void Genetic_Algorithm::selection_proportional(Population &original_population, 
           converged = 1;
           (void)fprintf(stderr,"WARNING!  The population appears to have converged, so this run will shortly terminate.\n");
       } else {
-          assert(finite(invdiffwa));
-          assert(finite(worst));
-          assert(finite(original_population.num_individuals()));
+          assert(isfinite(invdiffwa));
+          assert(isfinite(worst));
+          assert(isfinite(original_population.num_individuals()));
           assert(!ISNAN(invdiffwa));
           assert(!ISNAN(worst));
           assert(!ISNAN(original_population.num_individuals()));
@@ -1047,8 +1047,8 @@ void Genetic_Algorithm::selection_proportional(Population &original_population, 
           for (i=0;  i < original_population.num_individuals();  i++) {
              alloc[i] = (worst - original_population[i].value(e_mode)) * invdiffwa;
 
-             assert(finite(original_population[i].value(e_mode)));
-             assert(finite(alloc[i]));
+             assert(isfinite(original_population[i].value(e_mode)));
+             assert(isfinite(alloc[i]));
              assert(!ISNAN(original_population[i].value(e_mode)));
              assert(!ISNAN(alloc[i]));
           }// for i
